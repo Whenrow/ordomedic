@@ -4,6 +4,19 @@ import requests
 from BeautifulSoup import BeautifulSoup
 import json
 
+
+def generateSpecialities():
+# Function to retrieve all the specialisation
+  url = "https://ordomedic.be/fr/rechercher-un-medecin/"
+  response = requests.get(url)
+  soup = BeautifulSoup(response.text)
+  specList = soup.findAll("search_specialism")
+  sList = {}
+  for spec in specList:
+    sList.append(spec.a.string)
+  
+  return sList
+  
 # Url building
 site = "https://ordomedic.be/"
 town = "5000"
