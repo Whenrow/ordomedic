@@ -15,9 +15,14 @@ response = requests.get(url)
 # HTML parsing
 defaultSoup = BeautifulSoup(response.text)
 
+# Person list
 for med in defaultSoup.findAll(attrs = {"class": "result"}):
+  # Name's Extract
   name = med.findAll(attrs = {"class": "name"})
+  # Address' extract
   address = med.findAll(attrs = {"class": "address"})
+  # Text only of the info
   print name[0].string
+  print address[0].findAll("dd",limit=2)[0].string
+  print address[0].findAll("dd",limit=2)[1].string
   print ""
-  #print med.get("name")
