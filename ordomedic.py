@@ -1,3 +1,5 @@
+# -*- coding: utf8 -*-
+
 import requests
 from BeautifulSoup import BeautifulSoup
 import json
@@ -29,7 +31,7 @@ for info in defaultSoup.findAll(attrs = {"class": "result"}):
   # Text only of the info
   med["name"] = name[0].string
   med["Address"] = address[0].findAll("dd",limit=2)[0].string + address[0].findAll("dd",limit=2)[1].string
-  med["Phone"] = address[0].findAll("dd",limit=2)[-1].string
+  med["Phone"] = address[0].findAll("dd")[-1].string.split(" ")[1]
   people.append(med)
 
 # Save in a JSON file
