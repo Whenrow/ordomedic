@@ -1,5 +1,6 @@
 import requests
 from BeautifulSoup import BeautifulSoup
+import json
 
 # Url building
 site = "https://ordomedic.be/"
@@ -31,4 +32,6 @@ for info in defaultSoup.findAll(attrs = {"class": "result"}):
   med["Phone"] = address[0].findAll("dd",limit=2)[-1].string
   people.append(med)
 
-print len(people)
+# Save in a JSON file
+with open('medecins.json', 'w') as outfile:
+    json.dump(people, outfile)
