@@ -52,7 +52,7 @@ while isEnd == "N":
     phone = address[0].findAll("dd")[-1].string
     if phone[1:3] == "Tel":
       med["Phone"] = phone.split(" ")[1]
-    else
+    else:
       med["Phone"] = "None"
     people.append(med)
 
