@@ -19,9 +19,9 @@ def generateSpecialities():
 def RetrievePeople(page,speciality,people):
 # Function to retrieve people of a certain page for a certain speciality
   query = language+"/rechercher-un-medecin/?"
-  query = query + "search_specialism=" + spec["value"]
+  query = query + "search_specialism=" + speciality["value"]
   query = query + "search_place=" + town
-  query + query + "&page=" + str(numPage)
+  query + query + "&page=" + str(page)
   url = site+query
 
   # Url connecting
@@ -59,7 +59,7 @@ def RetrievePeople(page,speciality,people):
     else:
       med["Phone"] = "None"
     # Add the specialisation
-    med["specialisation"] = spec["name"]
+    med["specialisation"] = speciality["name"]
 
     # Not add duplicates
     if med not in people:
